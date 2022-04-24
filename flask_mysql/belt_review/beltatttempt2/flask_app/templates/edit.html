@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Arbortrary</h1>
+        <h3>A site to track randomly planted trees</h3>
+        <h2>Welcome {{user.first_name}}</h2>
+    <a href="/dashboard"><button>Dashboard</button></a>
+    <a href="/logout"><button>Logout</button></a>
+
+    <form action="/update/post" method="post">
+        <h2>Re-Plant Your Tree</h2>
+        {% with messages = get_flashed_messages(category_filter=['post']) %}
+            {% if messages %}
+            <div role="alert">
+                <strong>Flash</strong>
+                    {% for message in messages %}
+                    <p>{{message}}</p>
+                    {% endfor %}
+            </div>
+            {% endif %}
+        {% endwith %}
+        
+        <div>
+            <input type="hidden" name="id" value={{edit.id}}>
+            <div>
+                <div>
+                    <label for="reason">Reason:</label>
+                    <textarea name="reason"  cols="30" rows="5">{{edit.reason}}</textarea>
+                </div>
+                <div>
+                    <label for="location">Location:</label>
+                    <input type="text" name="location" value ="{{edit.location}}">
+                </div>
+            </div>
+            <div>
+
+                <div>
+                    <label for="date_planted">Seen on:</label>
+                    <input type="date" name="date_planted" value="{{edit.date_planted.strftime('%Y-%m-%d')}}">
+                </div>
+                    <label for="species">species</label>
+                    <input type="text" name="species" value=" {{edit.species}}">
+                <br>
+                <input type="submit" value="Edit Post">
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

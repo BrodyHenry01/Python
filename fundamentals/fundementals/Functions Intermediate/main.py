@@ -1,0 +1,71 @@
+#1
+
+x = [ [5,2,3], [10,8,9] ] 
+students = [
+    {'first_name':  'Michael', 'last_name' : 'Jordan'},
+    {'first_name' : 'John', 'last_name' : 'Rosales'}
+]
+sports_directory = {
+    'basketball' : ['Kobe', 'Jordan', 'James', 'Curry'],
+    'soccer' : ['Messi', 'Ronaldo', 'Rooney']
+}
+z = [ {'x': 10, 'y': 20} ]
+
+x[1][0] = 15
+print(x)
+
+students[0]['last_name'] = "Bryant"
+print(students)
+
+sports_directory['soccer'][0] = "Andres"
+print(sports_directory["soccer"])
+
+z[0]["y"] = 30
+print(z)
+
+#2
+students = [
+        {'first_name':  'Michael', 'last_name' : 'Jordan'},
+        {'first_name' : 'John', 'last_name' : 'Rosales'},
+        {'first_name' : 'Mark', 'last_name' : 'Guillen'},
+        {'first_name' : 'KB', 'last_name' : 'Tonel'}
+    ]
+
+# this one I needed help with a lot
+def iterateDictionary(x):
+    for i in range(0, len(x)):
+        output = ""
+        for key,val in x[i].items():
+            output += f" {key} - {val},"
+        print(output)
+
+# should output: (it's okay if each key-value pair ends up on 2 separate lines;
+# bonus to get them to appear exactly as below!)
+#first_name - John, last_name - Rosales
+#first_name - Mark, last_name - Guillen
+#first_name - KB, last_name - Tonel
+
+#3
+def iterateDictionary2(name, x):
+    for i in range(0, len(x)):
+        for key,val in x[i].items():
+            if key == name:
+                print(val)
+iterateDictionary2('first_name', students)
+iterateDictionary2('last_name', students)
+
+#4
+dojo = {
+    'locations': ['San Jose', 'Seattle', 'Dallas', 'Chicago', 'Tulsa', 'DC', 'Burbank'],
+    'instructors': ['Michael', 'Amy', 'Eduardo', 'Josh', 'Graham', 'Patrick', 'Minh', 'Devon']
+}
+
+def printInfo(d):
+    for key,val in d.items():
+        print("--------------")
+        print(f"{len(val)} {key.upper()}")
+        for i in range(0, len(val)):
+            print(val[i])
+
+
+printInfo(dojo)

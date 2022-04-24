@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class= navbar>
+        <h1>Arbortrary</h1>
+        <h3>A site to track randomly planted trees</h3>
+        <h2>Welcome {{user.first_name}}</h2>
+        <a href="/new/post"><button>Plant a Tree</button></a>
+        <a href="/logout"><button>Logout</button></a>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Species</th>
+                    <th>Planted by</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for post in posts %}
+                    <tr>
+                        <td>{{post.species}}</td>
+                        <td>{{post.user_id.first_name}}</td>
+                        <td>
+                            <a href="/post/{{post.id}}"><button>Details</button></a>
+                            {% if post.user_id == session.user_id %}
+                            <a href="/edit/post/{{post.id}}"><button>Edit</button></a>
+                            <a href="/remove/post/{{post.id}}"><button>Delete</button></a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

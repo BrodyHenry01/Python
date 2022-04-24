@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Users Displayed</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>email</th>
+                <th>created at</th>
+                <th>Account</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.last_name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.created_at }}</td>
+                <td> <a href="/user/display/{{user.id}}">Display</a>
+                    <a href="/user/update/{{user.id}}">Update</a>
+                    <a href="/user/delete/{{user.id}}">Delete</a>
+                </td> 
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href= "/user/new" >Create a new user</a>
+</body>
+</html>

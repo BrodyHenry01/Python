@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Sasquatch Websighting</h1>
+    <h2>{{user.first_name}}{{user.last_name}}</h2>
+    <a href="/dashboard"><button>Dashboard</button></a>
+    <a href="/logout"><button>Logout</button></a>
+
+    <form action="/update/post" method="post">
+        <h2>Edit Sasquatch Sighting</h2>
+        {% with messages = get_flashed_messages(category_filter=['post']) %}
+            {% if messages %}
+            <div role="alert">
+                <strong>Flash</strong>
+                    {% for message in messages %}
+                    <p>{{message}}</p>
+                    {% endfor %}
+            </div>
+            {% endif %}
+        {% endwith %}
+        
+        <div>
+            <input type="hidden" name="id" value={{edit.id}}>
+            <div>
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" value ="{{edit.username}}">
+                </div>
+                <div>
+                    <label for="description">Description:</label>
+                    <textarea name="description"  cols="30" rows="5">{{edit.description}}</textarea>
+                </div>
+                <div>
+                    <label for="location">Location:</label>
+                    <input type="text" name="location" value ="{{edit.location}}">
+                </div>
+            </div>
+            <div>
+
+                <div>
+                    <label for="date_of">Seen on:</label>
+                    <input type="date" name="date_of" value="{{edit.date_of.strftime('%Y-%m-%d')}}">
+                </div>
+                    <label for="squatches"># of Sasquatches:</label>
+                    <input type="number" name="squatches" value=" {{edit.squatches}}">
+                <br>
+                <input type="submit" value="Edit Post">
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

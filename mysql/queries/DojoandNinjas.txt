@@ -1,0 +1,17 @@
+INSERT INTO dojos (name) VALUES ("Red_Dojo"), ('Blue_Dojo') , ('Green_Dojo');
+
+
+SET SQL_SAFE_UPDATES = 0;
+DELETE FROM dojos;
+
+\\Dojo_id numbers are so high because I got confused with the delete function and kept making more//
+
+INSERT INTO ninjas (first_name, last_name, age, Dojo_id) VALUES ('Brody', "Henry", 20, 25),('Brynn', "Mess", 19, 25),('John', "Wick", 40, 25);
+INSERT INTO ninjas (first_name, last_name, age, Dojo_id) VALUES ('Brodytwo', "Henry", 20, 26),('Brynntwo', "Mess", 19, 26),('Johntwo', "Wick", 40, 26);
+INSERT INTO ninjas (first_name, last_name, age, Dojo_id) VALUES ('Brodythree', "Henry", 20, 27),('Brynnthree', "Mess", 19, 27),('Johnthree', "Wick", 40, 27);
+
+SELECT * FROM dojos LEFT JOIN ninjas ON dojos.id = ninjas.dojo_id WHERE dojos.id = 25;
+
+SELECT * FROM dojos LEFT JOIN ninjas ON dojos.id = ninjas.dojo_id WHERE dojos.id = (SELECT id FROM dojos ORDER BY id DESC LIMIT 1);
+
+SELECT * FROM dojos WHERE dojos.id = (SELECT dojo_id FROM ninjas ORDER BY dojo_id DESC LIMIT 1);

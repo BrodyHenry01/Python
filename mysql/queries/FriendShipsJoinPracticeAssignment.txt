@@ -1,0 +1,10 @@
+
+\\Yes I made the first name values my name Brody then a number followed, I also made another table once and deleted it and that is why the numbers are 7, 8, 9, 10, 11, 12//
+
+INSERT INTO users (first_name, last_name) VALUES ('Brody', 'Henry'), ('Brodytwo', 'Henry'), ('Brodythree', 'Henry'), ('Brodyfour', 'Henry'), ('Brodyfive', 'Henry'), ('Brodysix', 'Henry');
+
+INSERT INTO friendships (user_id, friend_id) VALUES (7,8), (7,10), (7,12), (8,7), (8,9), (8,11), (9,8), (9,11), (10,9), (11,7), (11,12), (12,8), (12,9);
+
+SELECT users.first_name as first_name, users.last_name as last_name, users2.first_name as friend_first_name, users2.last_name as friend
+JOIN friendships ON users.id = friendships.user_id 
+LEFT JOIN users as user2 ON users2.id = friendships.friend_id;
